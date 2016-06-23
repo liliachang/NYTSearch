@@ -13,9 +13,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.GridView;
 
 import com.codepath.nytimessearch.Article;
 import com.codepath.nytimessearch.ArticleRecyclerAdapter;
@@ -36,14 +33,12 @@ import cz.msebera.android.httpclient.Header;
 
 public class SearchActivity extends AppCompatActivity {
 
-    EditText etQuery;
-    GridView gvResults;
     RecyclerView rvResults;
-    Button btnSearch;
     String query_search;
     StaggeredGridLayoutManager gridLayoutManager;
     ArrayList<Article> articles;
     ArticleRecyclerAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,11 +49,6 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public void setupViews() {
-        //etQuery = (EditText) findViewById(R.id.etQuery);
-        //gvResults = (GridView) findViewById(R.id.gvResults);
-        //btnSearch = (Button) findViewById(R.id.btnSearch);
-
-        //adapter = new ArticleArrayAdapter(this, articles);
         rvResults = (RecyclerView) findViewById(R.id.rvResults);
         articles = new ArrayList<>();
         adapter = new ArticleRecyclerAdapter(this, articles);
@@ -96,10 +86,11 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.menu_search, menu);
+
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_search, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
+        MenuItem btnFilter = menu.findItem(R.id.action_filter);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -140,8 +131,6 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public void next_pages(int page) {
-        //String query = etQuery.getText().toString();
-        //Toast.makeText(this, "Searching for \"" + query + "\"", Toast.LENGTH_LONG).show();
         AsyncHttpClient client = new AsyncHttpClient();
         String url = "http://api.nytimes.com/svc/search/v2/articlesearch.json";
         RequestParams params = new RequestParams();
@@ -162,12 +151,10 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Log.d("DEBUG", response.toString());
-                JSONArray articleJsonResults = null;
+                JSONArray articleJsonResults;
                 try {
                     articleJsonResults = response.getJSONObject("response").getJSONArray("docs");
                     articles.addAll(Article.fromJSONArray(articleJsonResults));
-                    // adapter.addAll(articles);
-                    // adapter.addAll(Article.fromJSONArray(articleJsonResults));
                     adapter.notifyDataSetChanged();
                     Log.d("DEBUG", articles.toString());
                 } catch (JSONException e) {
@@ -184,5 +171,10 @@ public class SearchActivity extends AppCompatActivity {
 
     public void onArticleSearch(View view) {
         next_pages(0);
+    }
+
+    public void launchFilterActivity(MenuItem mi) {
+        Intent i = new Intent(SearchActivity.this, FilterActivity.class);
+        startActivity(i);
     }
 }

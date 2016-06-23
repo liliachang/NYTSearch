@@ -13,5 +13,11 @@
         android:icon="@android:drawable/ic_menu_search"
         app:showAsAction="ifRoom|collapseActionView"
         app:actionViewClass="android.support.v7.widget.SearchView" />
+    <item android:id="@+id/action_filter"
+        android:orderInCategory="20"
+        android:title="Filter"
+        android:icon="@android:drawable/btn_plus"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:onClick="launchFilterActivity"/>
 
 </menu>
