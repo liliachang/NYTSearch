@@ -19,6 +19,7 @@ import com.codepath.nytimessearch.ArticleRecyclerAdapter;
 import com.codepath.nytimessearch.EndlessRecyclerViewScrollListener;
 import com.codepath.nytimessearch.ItemClickSupport;
 import com.codepath.nytimessearch.R;
+import com.codepath.nytimessearch.SearchFilters;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -26,6 +27,7 @@ import com.loopj.android.http.RequestParams;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -33,11 +35,13 @@ import cz.msebera.android.httpclient.Header;
 
 public class SearchActivity extends AppCompatActivity {
 
+    private static final int REQUEST_CODE = 20;
     RecyclerView rvResults;
     String query_search;
     StaggeredGridLayoutManager gridLayoutManager;
     ArrayList<Article> articles;
     ArticleRecyclerAdapter adapter;
+    SearchFilters filter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,7 +137,14 @@ public class SearchActivity extends AppCompatActivity {
     public void next_pages(int page) {
         AsyncHttpClient client = new AsyncHttpClient();
         String url = "http://api.nytimes.com/svc/search/v2/articlesearch.json";
+        //RequestParams params = new RequestParams();
+        //RequestParams params = filter.getParams();
+        //filter = (SearchFilters) Parcels.unwrap(getIntent().getParcelableExtra("updatedFilter"));
         RequestParams params = new RequestParams();
+        if (filter != null ) {
+            params = filter.getParams();
+        }
+        //params.put("sort", "oldest");
         params.put("api-key", "78a4dc74be974f8dae0b6e9a12b2d718");
         params.put("page", page);
         params.put("q", query_search);
@@ -175,6 +186,13 @@ public class SearchActivity extends AppCompatActivity {
 
     public void launchFilterActivity(MenuItem mi) {
         Intent i = new Intent(SearchActivity.this, FilterActivity.class);
-        startActivity(i);
+        filter = new SearchFilters(0, "", new ArrayList<String>(), "");
+        i.putExtra("filter", Parcels.wrap(filter));
+        startActivityForResult(i, REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        filter = Parcels.unwrap(data.getParcelableExtra("updatedFilter"));
     }
 }

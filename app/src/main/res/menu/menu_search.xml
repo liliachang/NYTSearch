@@ -16,7 +16,7 @@
     <item android:id="@+id/action_filter"
         android:orderInCategory="20"
         android:title="Filter"
-        android:icon="@android:drawable/btn_plus"
+        android:icon="@drawable/ic_filter"
         app:showAsAction="ifRoom|collapseActionView"
         android:onClick="launchFilterActivity"/>
 

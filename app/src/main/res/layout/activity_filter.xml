@@ -9,39 +9,115 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.codepath.nytimessearch.activities.FilterActivity">
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sort Order"
+        android:id="@+id/tvSortInstructions"
+        android:layout_alignTop="@+id/spSort"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner"
+        android:id="@+id/spSort"
+        android:entries="@array/options"
+        android:layout_toRightOf="@+id/tvSortInstructions"
+        android:layout_toEndOf="@+id/tvSortInstructions"
+        android:layout_marginTop="56dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Topic"
+        android:id="@+id/tvInstruction"
+        android:onClick="onCheckboxClicked"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arts"
+        android:id="@+id/cbArts"
+        android:checked="false"
+        android:onClick="onCheckboxClicked"
+        android:layout_alignTop="@+id/tvInstruction"
+        android:layout_toRightOf="@+id/tvInstruction"
+        android:layout_toEndOf="@+id/tvInstruction" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fashion &amp; Style"
+        android:id="@+id/cbFashion"
+        android:checked="false"
+        android:onClick="onCheckboxClicked"
+        android:layout_below="@+id/cbArts"
+        android:layout_alignLeft="@+id/cbArts"
+        android:layout_alignStart="@+id/cbArts" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sports"
+        android:id="@+id/cbSports"
+        android:checked="false"
+        android:onClick="onCheckboxClicked"
+        android:layout_below="@+id/cbFashion"
+        android:layout_alignLeft="@+id/cbFashion"
+        android:layout_alignStart="@+id/cbFashion" />
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:id="@+id/button3"
+        android:onClick="onSubmit"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/spSort"
+        android:layout_alignEnd="@+id/spSort" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/tvSortInstructions"
+        android:layout_alignRight="@+id/spSort"
+        android:layout_alignEnd="@+id/spSort"
+        android:weightSum="1">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Begin date"
-        android:id="@+id/button"
-        android:layout_below="@+id/spinner"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Begin date"
+            android:id="@+id/tvBeginInstruction" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Topics"
-        android:id="@+id/button2"
-        android:layout_below="@+id/button"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        android:id="@+id/button3"
-        android:layout_below="@+id/button2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <Spinner
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/spMonth"
+            android:entries="@array/months"/>
+
+        <Spinner
+            android:layout_width="69dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/spDay"
+            android:entries="@array/days"/>
+
+        <Spinner
+            android:layout_width="69dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/spYear"
+            android:entries="@array/years"/>
+    </LinearLayout>
+
 
 </RelativeLayout>

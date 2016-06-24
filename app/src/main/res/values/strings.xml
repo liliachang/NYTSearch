@@ -5,4 +5,5 @@
     <string name="textsearch">Search</string>
     <string name="title_activity_article">ArticleActivity</string>
     <string name="sort">Sort by</string>
+    <string name="dateHint">MM-DD-YYYY</string>
 </resources>
