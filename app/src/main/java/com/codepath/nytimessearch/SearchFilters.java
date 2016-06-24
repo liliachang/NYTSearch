@@ -28,23 +28,21 @@ public class SearchFilters {
         url = filteredUrl;
     }
 
-    public void setBegin_date(int date) {
-        begin_date = date;
-    }
-
     public void addNewsDeskItem(String newsDeskItem) {
         newsDeskItems.add(newsDeskItem);
     }
 
     public void setUrl() {
-        String newsDeskItemsStr =
-                android.text.TextUtils.join(" ", newsDeskItems);
-        String newsDeskParamValue =
-                String.format("news_desk:(%s)", newsDeskItemsStr);
         params = new RequestParams();
+        if (newsDeskItems.size() > 0 ) {
+            String newsDeskItemsStr =
+                    android.text.TextUtils.join(" ", newsDeskItems);
+            String newsDeskParamValue =
+                    String.format("news_desk:(%s)", newsDeskItemsStr);
+            params.put("fq", newsDeskParamValue);
+        }
         params.put("begin_date", begin_date);
         params.put("sort", sort);
-        params.put("fq", newsDeskParamValue);
     }
 
     public RequestParams getParams() {

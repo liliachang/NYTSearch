@@ -30,20 +30,26 @@ public class FilterActivity extends AppCompatActivity {
         spYear = (Spinner) findViewById(R.id.spYear);
         spSort = (Spinner) findViewById(R.id.spSort);
         filter = (SearchFilters) Parcels.unwrap(getIntent().getParcelableExtra("filter"));
-        /*findViewById(dpDate).setOnClickListener(
 
-        );*/
+    }
+
+    public void loadFormFromFilters() {
+        int date = filter.begin_date;
+        int year = date % 10000;
+        int
+        if (filter.sort == "newest") {
+            spSort.setSelection(0);
+        } else {
+            spSort.setSelection(1);
+        }
+        spDate.setSelection();
     }
 
     public void getYear() {
-        /*int date = Integer.valueOf(spDate.getSelectedItem().toString());
+        int date = Integer.valueOf(spDate.getSelectedItem().toString());
         int month = Integer.valueOf(spMonth.getSelectedItem().toString());
         int year = Integer.valueOf(spYear.getSelectedItem().toString());
-        filter.begin_date = year * 1000 + month * 10 + date;*/
-        int date = (int) spDate.getSelectedItem();
-        int month = (int) spMonth.getSelectedItem();
-        int year = (int) spYear.getSelectedItem();
-        filter.begin_date = year * 1000 + month * 10 + date;
+        filter.begin_date = year * 10000 + month * 100 + date;
     }
 
     public void getSortPreference() {
@@ -64,14 +70,20 @@ public class FilterActivity extends AppCompatActivity {
             case R.id.cbArts:
                 if (checked)
                     filter.addNewsDeskItem("\"Arts\"");
+                else
+                    filter.newsDeskItems.remove("\"Arts\"");
                 break;
             case R.id.cbFashion:
                 if (checked)
                     filter.addNewsDeskItem("\"Fashion & Style\"");
+                else
+                    filter.newsDeskItems.remove("\"Fashion & Style\"");
                 break;
             case R.id.cbSports:
                 if (checked)
                     filter.addNewsDeskItem("\"Sports\"");
+                else
+                    filter.newsDeskItems.remove("\"Sports\"");
                 break;
         }
     }

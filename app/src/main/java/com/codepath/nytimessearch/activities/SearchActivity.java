@@ -94,7 +94,6 @@ public class SearchActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_search, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
-        MenuItem btnFilter = menu.findItem(R.id.action_filter);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -158,6 +157,7 @@ public class SearchActivity extends AppCompatActivity {
             });
             adapter.clear();
         }
+        Log.d("searchactivity", url + "?" + params);
         client.get(url, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -194,5 +194,8 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         filter = Parcels.unwrap(data.getParcelableExtra("updatedFilter"));
+        articles.clear();
+        adapter.notifyDataSetChanged();
+        next_pages(0);
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer-array name="months">
+    <string-array name="months">
         <item>01</item>
         <item>02</item>
         <item>03</item>
@@ -13,5 +13,5 @@
         <item>10</item>
         <item>11</item>
         <item>12</item>
-    </integer-array>
+    </string-array>
 </resources>

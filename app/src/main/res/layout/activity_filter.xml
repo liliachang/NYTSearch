@@ -15,17 +15,21 @@
         android:layout_height="wrap_content"
         android:text="Sort Order"
         android:id="@+id/tvSortInstructions"
-        android:layout_alignTop="@+id/spSort"
+        android:layout_below="@+id/spMonth"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp" />
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spSort"
         android:entries="@array/options"
+        android:layout_below="@+id/spMonth"
         android:layout_toRightOf="@+id/tvSortInstructions"
         android:layout_toEndOf="@+id/tvSortInstructions"
-        android:layout_marginTop="56dp" />
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,7 +37,7 @@
         android:text="Select Topic"
         android:id="@+id/tvInstruction"
         android:onClick="onCheckboxClicked"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/spSort"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
     <CheckBox
@@ -81,43 +85,46 @@
         android:layout_alignRight="@+id/spSort"
         android:layout_alignEnd="@+id/spSort" />
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Begin date"
+        android:id="@+id/tvBeginInstruction" />
+
+    <Spinner
+        android:layout_width="78dp"
+        android:layout_height="106dp"
+        android:id="@+id/spMonth"
+        android:entries="@array/months"
+        android:scrollIndicators="right"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/tvSortInstructions"
-        android:layout_alignRight="@+id/spSort"
-        android:layout_alignEnd="@+id/spSort"
-        android:weightSum="1">
+        android:layout_toRightOf="@+id/tvInstruction"
+        android:layout_alignBottom="@+id/spDay"
+        android:layout_alignRight="@+id/cbArts"
+        android:layout_alignEnd="@+id/cbArts" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Begin date"
-            android:id="@+id/tvBeginInstruction" />
+    <Spinner
+        android:layout_width="69dp"
+        android:layout_height="112dp"
+        android:id="@+id/spDay"
+        android:entries="@array/days"
+        android:scrollIndicators="right"
+        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/spYear"
+        android:layout_alignRight="@+id/cbFashion"
+        android:layout_alignEnd="@+id/cbFashion"
+        android:layout_toRightOf="@+id/spMonth"
+        android:layout_toEndOf="@+id/spMonth" />
 
-
-        <Spinner
-            android:layout_width="72dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/spMonth"
-            android:entries="@array/months"/>
-
-        <Spinner
-            android:layout_width="69dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/spDay"
-            android:entries="@array/days"/>
-
-        <Spinner
-            android:layout_width="69dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/spYear"
-            android:entries="@array/years"/>
-    </LinearLayout>
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spYear"
+        android:entries="@array/years"
+        android:layout_weight="1"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/spDay"
+        android:layout_toEndOf="@+id/spDay" />
 
 
 </RelativeLayout>
