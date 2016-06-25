@@ -12,6 +12,9 @@ import java.util.ArrayList;
 @Parcel
 public class SearchFilters {
     public int begin_date;
+    public int begin_year;
+    public int begin_month;
+    public int begin_day;
     public String sort;
     public ArrayList<String> newsDeskItems;
     public String url;
@@ -23,6 +26,9 @@ public class SearchFilters {
 
     public SearchFilters(int begin, String which_sort, ArrayList<String> items, String filteredUrl) {
         begin_date = begin;
+        begin_year = begin;
+        begin_month = begin;
+        begin_day = begin;
         sort = which_sort;
         newsDeskItems = items;
         url = filteredUrl;

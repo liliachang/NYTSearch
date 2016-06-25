@@ -20,6 +20,9 @@ public class FilterActivity extends AppCompatActivity {
     public Spinner spDate;
     public Spinner spYear;
     public Spinner spSort;
+    public CheckBox cbArts;
+    public CheckBox cbFashion;
+    public CheckBox cbSports;
     private static final int RESULT_OK = 50;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,27 +32,44 @@ public class FilterActivity extends AppCompatActivity {
         spMonth = (Spinner) findViewById(R.id.spMonth);
         spYear = (Spinner) findViewById(R.id.spYear);
         spSort = (Spinner) findViewById(R.id.spSort);
-        filter = (SearchFilters) Parcels.unwrap(getIntent().getParcelableExtra("filter"));
+        cbArts = (CheckBox) findViewById(R.id.cbArts);
+        cbFashion = (CheckBox) findViewById(R.id.cbFashion);
+        cbSports = (CheckBox) findViewById(R.id.cbSports);
+        filter = Parcels.unwrap(getIntent().getParcelableExtra("filter"));
+        loadFormFromFilters();
 
     }
 
     public void loadFormFromFilters() {
-        int date = filter.begin_date;
-        int year = date % 10000;
-        int
         if (filter.sort == "newest") {
             spSort.setSelection(0);
-        } else {
+        } else if (filter.sort == "oldest") {
             spSort.setSelection(1);
         }
-        spDate.setSelection();
+        if (filter.begin_date != 0) {
+            spDate.setSelection(filter.begin_day);
+            spMonth.setSelection(filter.begin_month);
+            spMonth.setSelection(filter.begin_year);
+        }
+
+        for (String str : filter.newsDeskItems) {
+            if (str.equals("\"Arts\"")) {
+                cbArts.setChecked(true);
+            }
+            if (str.equals("\"Fashion & Style\"")) {
+                cbFashion.setChecked(true);
+            }
+            if (str.equals("\"Sports\"")) {
+                cbSports.setChecked(true);
+            }
+        }
     }
 
     public void getYear() {
-        int date = Integer.valueOf(spDate.getSelectedItem().toString());
-        int month = Integer.valueOf(spMonth.getSelectedItem().toString());
-        int year = Integer.valueOf(spYear.getSelectedItem().toString());
-        filter.begin_date = year * 10000 + month * 100 + date;
+        filter.begin_day = Integer.valueOf(spDate.getSelectedItem().toString());
+        filter.begin_month = Integer.valueOf(spMonth.getSelectedItem().toString());
+        filter.begin_year = Integer.valueOf(spYear.getSelectedItem().toString());
+        filter.begin_date = filter.begin_year * 10000 + filter.begin_month * 100 + filter.begin_day;
     }
 
     public void getSortPreference() {
