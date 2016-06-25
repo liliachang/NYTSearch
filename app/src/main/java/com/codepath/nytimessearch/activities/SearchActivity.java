@@ -47,6 +47,7 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        filter = new SearchFilters("", "", new ArrayList<String>(), "");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setupViews();
@@ -186,7 +187,6 @@ public class SearchActivity extends AppCompatActivity {
 
     public void launchFilterActivity(MenuItem mi) {
         Intent i = new Intent(SearchActivity.this, FilterActivity.class);
-        filter = new SearchFilters(0, "", new ArrayList<String>(), "");
         i.putExtra("filter", Parcels.wrap(filter));
         startActivityForResult(i, REQUEST_CODE);
     }

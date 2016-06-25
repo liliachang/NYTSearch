@@ -11,10 +11,10 @@ import java.util.ArrayList;
  */
 @Parcel
 public class SearchFilters {
-    public int begin_date;
-    public int begin_year;
-    public int begin_month;
-    public int begin_day;
+    public String begin_date;
+    public String begin_year;
+    public String begin_month;
+    public String begin_day;
     public String sort;
     public ArrayList<String> newsDeskItems;
     public String url;
@@ -24,7 +24,8 @@ public class SearchFilters {
         // empty for parceler
     }
 
-    public SearchFilters(int begin, String which_sort, ArrayList<String> items, String filteredUrl) {
+    public SearchFilters(String begin, String which_sort, ArrayList<String> items, String filteredUrl) {
+        params = new RequestParams();
         begin_date = begin;
         begin_year = begin;
         begin_month = begin;
@@ -39,7 +40,6 @@ public class SearchFilters {
     }
 
     public void setUrl() {
-        params = new RequestParams();
         if (newsDeskItems.size() > 0 ) {
             String newsDeskItemsStr =
                     android.text.TextUtils.join(" ", newsDeskItems);
@@ -52,6 +52,7 @@ public class SearchFilters {
     }
 
     public RequestParams getParams() {
+
         return params;
     }
 }
