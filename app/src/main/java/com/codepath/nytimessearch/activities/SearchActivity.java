@@ -57,7 +57,7 @@ public class SearchActivity extends AppCompatActivity {
         rvResults = (RecyclerView) findViewById(R.id.rvResults);
         articles = new ArrayList<>();
         adapter = new ArticleRecyclerAdapter(this, articles);
-        gridLayoutManager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL);
+        gridLayoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         rvResults.setAdapter(adapter);
         rvResults.setLayoutManager(gridLayoutManager);
         rvResults.addOnScrollListener(new EndlessRecyclerViewScrollListener(gridLayoutManager) {

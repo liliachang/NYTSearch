@@ -78,10 +78,6 @@ public class FilterActivity extends AppCompatActivity {
     }
 
     public void getYear() {
-        /*filter.begin_day = Integer.valueOf(spDate.getSelectedItem().toString());
-        filter.begin_month = Integer.valueOf(spMonth.getSelectedItem().toString());
-        filter.begin_year = Integer.valueOf(spYear.getSelectedItem().toString());
-        filter.begin_date = filter.begin_year * 10000 + filter.begin_month * 100 + filter.begin_day;*/
         filter.begin_day = spDate.getSelectedItem().toString();
         filter.begin_month = spMonth.getSelectedItem().toString();
         filter.begin_year = spYear.getSelectedItem().toString();
@@ -127,15 +123,6 @@ public class FilterActivity extends AppCompatActivity {
     public void onSubmit(View view) {
         getYear();
         getSortPreference();
-        // Launching new activity
-        // intent = new Intent(Stukfeft)
-        // startActivity(intent);
-        // OTHER
-        // intent = new Intent()
-        // setResult
-        //finish
-
-
         Intent i = new Intent();
         filter.setUrl();
         i.putExtra("updatedFilter", Parcels.wrap(filter));

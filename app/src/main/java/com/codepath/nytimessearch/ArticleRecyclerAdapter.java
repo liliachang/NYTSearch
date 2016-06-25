@@ -70,7 +70,7 @@ public class ArticleRecyclerAdapter extends RecyclerView.Adapter<ArticleRecycler
         imageView.setImageResource(0);
         String thumbnail = article.getThumbNail();
         if (!TextUtils.isEmpty(thumbnail)) {
-            Picasso.with(getContext()).load(thumbnail).into(imageView);
+            Picasso.with(getContext()).load(thumbnail).resize(350, 0).into(imageView);
         }
     }
 

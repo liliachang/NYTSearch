@@ -23,7 +23,7 @@ public class ArticleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_article);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setTitle("");
         Article article = (Article) getIntent().getSerializableExtra("article");
         WebView webView = (WebView) findViewById(R.id.wvArticle);
         webView.setWebViewClient(new WebViewClient() {

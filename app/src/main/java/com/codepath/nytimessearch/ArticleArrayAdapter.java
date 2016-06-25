@@ -46,8 +46,11 @@ public class ArticleArrayAdapter extends ArrayAdapter<Article> {
 
         String thumbnail = article.getThumbNail();
         if (!TextUtils.isEmpty(thumbnail)) {
-            Picasso.with(getContext()).load(thumbnail).into(imageView);
+            Picasso.with(getContext()).load(thumbnail).resize(375,0).into(imageView);
+        } else {
+            Picasso.with(getContext()).load("http://ascnd.io/images/tnw.png").resize(375,0).into(imageView);
         }
+
         return convertView;
     }
 }
