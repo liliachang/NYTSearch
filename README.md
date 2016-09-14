@@ -8,36 +8,25 @@ Time spent: **~15** hours spent in total
 
 The following **required** functionality is completed:
 
-* [x ] User can **search for news article** by specifying a query and launching a search. Search displays a grid of image results from the New York Times Search API.
-* [ x] User can **scroll down to see more articles**. The maximum number of articles is limited by the API search.
-* [x ] User can tap on any image in results to see the full text of article **full-screen**
+* [x] User can **search for news article** by specifying a query and launching a search. Search displays a grid of image results from the New York Times Search API.
+* [x] User can **scroll down to see more articles**. The maximum number of articles is limited by the API search.
+* [x] User can tap on any image in results to see the full text of article **full-screen**
 
 The following **optional** features are implemented:
 
-* [x ] Used the **ActionBar SearchView** or custom layout as the query box
-* [ x] User can **share an article link** to their friends or email it to themselves
-* [ x] Improved the user interface and experiment with image assets and/or styling and coloring
-* [x ] User can click on "filter icon" which allows selection of **advanced search options** to filter results
-  * [ x] User can configure advanced search filters such as:
-    * [x ] Begin Date (using a date picker)
-    * [x ] News desk values (Arts, Fashion & Style, Sports)
-    * [ x] Sort order (oldest or newest)
-  * [x ] Subsequent searches have any selected filters applied to the results
-  * [ ] Uses a lightweight modal dialog for filters rather than an activity
-* [x ] Replaces the default ActionBar with a [Toolbar](http://guides.codepath.com/android/Using-the-App-ToolBar).
-* [ ] Apply the popular [Butterknife annotation library](http://guides.codepath.com/android/Reducing-View-Boilerplate-with-Butterknife) to reduce view boilerplate.
-* [x ] Replace `GridView` with the [RecyclerView](http://guides.codepath.com/android/Using-the-RecyclerView) and the `StaggeredGridLayoutManager` to improve the grid of image results displayed.
+* [x] Used the **ActionBar SearchView** or custom layout as the query box
+* [x] User can **share an article link** to their friends or email it to themselves
+* [x] Improved the user interface and experiment with image assets and/or styling and coloring
+* [x] User can click on "filter icon" which allows selection of **advanced search options** to filter results
+  * [x] User can configure advanced search filters such as:
+    * [x] Begin Date (using a date picker)
+    * [x] News desk values (Arts, Fashion & Style, Sports)
+    * [x] Sort order (oldest or newest)
+  * [x] Subsequent searches have any selected filters applied to the results
+* [x] Replaces the default ActionBar with a [Toolbar](http://guides.codepath.com/android/Using-the-App-ToolBar).
+* [x] Replace `GridView` with the [RecyclerView](http://guides.codepath.com/android/Using-the-RecyclerView) and the `StaggeredGridLayoutManager` to improve the grid of image results displayed.
       This took awhile to implement.
-* [x ] Use Parcelable instead of Serializable leveraging the popular [Parceler library](http://guides.codepath.com/android/Using-Parceler).
-* [ ] Replace Picasso with [Glide](http://inthecheesefactory.com/blog/get-to-know-glide-recommended-by-google/en) for more efficient image rendering.
-* [ ] Before an article search is triggered by the user, displays the current top stories of the day by default.
-* [ ] Hides the `Toolbar` at the top as the user scrolls down through the results using the [CoordinatorLayout and AppBarLayout](http://guides.codepath.com/android/Using-the-App-ToolBar#reacting-to-scroll).
-* [ ] Leverage the popular [GSON library](http://guides.codepath.com/android/Using-Android-Async-Http-Client#decoding-with-gson-library) to streamline the parsing of JSON data and avoid manual parsing.
-
-The following **additional** features are implemented:
-
-* [ ] List anything else that you can get done to improve the app functionality!
-
+* [x] Use Parcelable instead of Serializable leveraging the popular [Parceler library](http://guides.codepath.com/android/Using-Parceler).
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
